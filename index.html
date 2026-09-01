@@ -836,8 +836,13 @@ footer p{font-size:.82rem;color:var(--txt-soft)}
       <p class="price-old">Precio habitual de acceso <s>€67</s></p>
       <div class="price-now"><span class="cur">€</span><span class="amt">47</span></div>
       <p class="sub">Tu acceso incluye todas las herramientas y recursos que acabas de conocer.</p>
-      <a href="#" class="btn btn-lg">Sí, quiero activar Clínica en Orden Pro por €47
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <!-- HOTMART - Sales Funnel Widget -->
+      <div id="hotmart-sales-funnel"></div>
+      <script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
+      <script>
+        checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel')
+      </script>
+      <!-- HOTMART - Sales Funnel Widget -->
       <p class="fine">Pago único · Acceso inmediato tras la confirmación</p>
     </div>
   </div>
@@ -975,7 +980,7 @@ footer p{font-size:.82rem;color:var(--txt-soft)}
     <p class="reveal" data-d="2">O puedes tener una herramienta que haga gran parte de ese trabajo contigo.</p>
     <p class="pull reveal">Quitar de en medio el trabajo repetitivo para que dediques tu tiempo a lo que realmente importa: <span class="serif">tus pacientes</span>.</p>
     <p class="reveal" style="color:var(--txt);font-weight:500;font-size:1.15rem">Tu acceso está disponible ahora.</p>
-    <a href="#checkout" class="btn btn-lg reveal" data-d="1">Quiero activar mi acceso a Clínica en Orden Pro
+    <a href="#hotmart-sales-funnel" class="btn btn-lg reveal" data-d="1">Quiero activar mi acceso a Clínica en Orden Pro
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
 
     <!-- último bloque -->
@@ -983,7 +988,7 @@ footer p{font-size:.82rem;color:var(--txt-soft)}
       <span class="warn"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16v.5"/></svg>Solo durante este proceso de compra</span>
       <p>Esta condición especial está disponible únicamente durante este proceso de compra. Si abandonas esta página, es posible que esta oferta no vuelva a estar disponible en las mismas condiciones.</p>
       <p>Al aceptar esta oferta, tu pedido se actualizará automáticamente y recibirás las instrucciones para acceder a Clínica en Orden Pro.</p>
-      <a href="#checkout" class="btn">Sí, quiero Clínica en Orden Pro
+      <a href="#hotmart-sales-funnel" class="btn">Sí, quiero Clínica en Orden Pro
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
@@ -1000,7 +1005,7 @@ footer p{font-size:.82rem;color:var(--txt-soft)}
 <div class="sticky" id="sticky">
   <div class="sticky-in">
     <div class="sticky-txt"><b>Clínica en Orden Pro · €47</b><span>Precio habitual €67 · solo en esta página</span></div>
-    <a href="#checkout" class="btn">Activar mi acceso</a>
+    <a href="#hotmart-sales-funnel" class="btn">Activar mi acceso</a>
   </div>
 </div>
 
