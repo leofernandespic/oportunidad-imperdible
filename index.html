@@ -95,7 +95,7 @@ p{color:var(--txt-mut)}
 
 /* ---------- Hero ---------- */
 .hero{
-  position:relative;padding:80px 0 90px;text-align:center;overflow:hidden;
+  position:relative;padding:32px 0 90px;text-align:center;overflow:hidden;
   background:radial-gradient(125% 82% at 50% -24%, rgba(28,79,224,.42), rgba(11,55,189,.10) 40%, transparent 64%), var(--ink);
 }
 /* Vertical grid lines (recreation of the Framer "VerticalGridLines" component, in our palette):
@@ -467,7 +467,7 @@ footer p{font-size:.82rem;color:var(--txt-soft)}
 
 /* scroll progress */
 /* Top loading bar — brand mark + a compact "system status" readout, styled like the .eyebrow badges used across the page */
-.top-bar{display:flex;flex-direction:column;align-items:center;gap:14px;padding:30px 24px 6px;position:relative;z-index:1}
+.top-bar{display:flex;flex-direction:column;align-items:center;gap:14px;padding:8px 24px 6px;position:relative;z-index:1}
 .top-bar-logo{height:24px;flex:none}
 .top-bar-status{display:inline-flex;align-items:center;gap:10px;padding:8px 18px;border:1px solid var(--peri-line);border-radius:100px;background:rgba(255,255,255,.03);backdrop-filter:blur(6px);max-width:100%}
 .top-bar-dot{width:6px;height:6px;margin-top:1px;border-radius:50%;background:var(--peri);box-shadow:0 0 10px var(--peri);flex:none;animation:top-bar-pulse 1.6s ease-in-out infinite}
@@ -482,7 +482,7 @@ footer p{font-size:.82rem;color:var(--txt-soft)}
 @keyframes barberpole{from{background-position:0 0}to{background-position:17px 0}}
 .top-bar-pct{font-size:.68rem;font-weight:700;letter-spacing:.02em;color:var(--peri);flex:none;font-variant-numeric:tabular-nums}
 @media(max-width:560px){
-  .top-bar{padding:22px 16px 4px;gap:10px}
+  .top-bar{padding:8px 16px 4px;gap:10px}
   .top-bar-logo{height:18px}
   .top-bar-status{padding:6px 12px;gap:8px}
   .top-bar-track{width:84px}
