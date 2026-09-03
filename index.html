@@ -394,6 +394,10 @@ p{color:var(--txt-mut)}
 .price-card{max-width:620px;margin:0 auto;text-align:center;
   background:linear-gradient(180deg,rgba(138,160,221,.09),rgba(255,255,255,.02));
   border:1px solid rgba(28,79,224,.4);border-radius:26px;padding:clamp(34px,5vw,56px);position:relative;overflow:hidden}
+/* Hotmart's checkout iframe carries its own min-width:320px — bleed it past the card's
+   side padding (negated with the same clamp so they always cancel exactly) so it never
+   gets clipped by .price-card's overflow:hidden on narrow phones */
+#hotmart-sales-funnel{margin:0 clamp(-56px,-5vw,-34px);max-width:none!important}
 .price-card::before{content:"";position:absolute;top:-50%;left:50%;transform:translateX(-50%);width:120%;height:100%;background:radial-gradient(closest-side,rgba(11,55,189,.4),transparent 70%);filter:blur(30px)}
 .price-card>*{position:relative;z-index:1}
 .price-old{color:var(--txt-soft);font-size:1.05rem;margin-bottom:6px}
