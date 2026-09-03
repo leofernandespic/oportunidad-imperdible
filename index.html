@@ -466,25 +466,30 @@ footer p{font-size:.82rem;color:var(--txt-soft)}
 @media(max-width:640px){.sticky-txt{display:none}.sticky .btn{width:100%}}
 
 /* scroll progress */
-/* Top loading bar — logo + progress indicator, sits directly on the hero's own background */
-.top-bar{display:flex;align-items:center;gap:20px;padding:20px 24px 0;position:relative;z-index:1}
-.top-bar-logo{height:26px;flex:none}
-.top-bar-track{flex:1;height:32px;border-radius:100px;background:rgba(255,255,255,.07);overflow:hidden;position:relative;max-width:640px}
-.top-bar-fill{height:100%;border-radius:100px;width:70%;
+/* Top loading bar — brand mark + a compact "system status" readout, styled like the .eyebrow badges used across the page */
+.top-bar{display:flex;flex-direction:column;align-items:center;gap:14px;padding:30px 24px 6px;position:relative;z-index:1}
+.top-bar-logo{height:24px;flex:none}
+.top-bar-status{display:inline-flex;align-items:center;gap:10px;padding:8px 18px;border:1px solid var(--peri-line);border-radius:100px;background:rgba(255,255,255,.03);backdrop-filter:blur(6px);max-width:100%}
+.top-bar-dot{width:6px;height:6px;border-radius:50%;background:var(--peri);box-shadow:0 0 10px var(--peri);flex:none;animation:top-bar-pulse 1.6s ease-in-out infinite}
+@keyframes top-bar-pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.top-bar-label{font-size:.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--txt-mut);white-space:nowrap;flex:none}
+.top-bar-track{width:130px;height:6px;border-radius:100px;background:rgba(255,255,255,.08);overflow:hidden;position:relative;flex:none;display:block}
+.top-bar-fill{display:block;height:100%;border-radius:100px;width:70%;
   background-color:var(--blue);
-  background-image:repeating-linear-gradient(45deg,var(--blue-hi) 0 12px,transparent 12px 24px);
-  background-size:34px 34px;
-  animation:barberpole 1s linear infinite;
-  display:flex;align-items:center;justify-content:center;overflow:hidden}
-.top-bar-fill span{font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;white-space:nowrap;padding:0 14px}
-@keyframes barberpole{from{background-position:0 0}to{background-position:34px 0}}
+  background-image:repeating-linear-gradient(45deg,var(--blue-hi) 0 6px,transparent 6px 12px);
+  background-size:17px 17px;
+  animation:barberpole .6s linear infinite}
+@keyframes barberpole{from{background-position:0 0}to{background-position:17px 0}}
+.top-bar-pct{font-size:.68rem;font-weight:700;letter-spacing:.02em;color:var(--peri);flex:none;font-variant-numeric:tabular-nums}
 @media(max-width:560px){
-  .top-bar{padding:16px 16px 0;gap:14px}
-  .top-bar-logo{height:20px}
-  .top-bar-track{height:28px}
-  .top-bar-fill span{font-size:.62rem;padding:0 8px}
+  .top-bar{padding:22px 16px 4px;gap:10px}
+  .top-bar-logo{height:18px}
+  .top-bar-status{padding:6px 12px;gap:8px}
+  .top-bar-track{width:84px}
+  .top-bar-label{font-size:.58rem}
+  .top-bar-pct{font-size:.6rem}
 }
-@media(prefers-reduced-motion:reduce){.top-bar-fill{animation:none}}
+@media(prefers-reduced-motion:reduce){.top-bar-fill,.top-bar-dot{animation:none}}
 .progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:60;
   background:linear-gradient(90deg,var(--blue),var(--peri));box-shadow:0 0 12px rgba(138,160,221,.6)}
 
@@ -586,8 +591,11 @@ footer p{font-size:.82rem;color:var(--txt-soft)}
   <!-- top loading bar -->
   <div class="top-bar">
     <img src="assets/logo-branca.svg" alt="Clínica en Orden Pro" class="top-bar-logo">
-    <div class="top-bar-track">
-      <div class="top-bar-fill"><span>Estamos finalizando tudo</span></div>
+    <div class="top-bar-status">
+      <span class="top-bar-dot"></span>
+      <span class="top-bar-label">Estamos finalizando tudo</span>
+      <span class="top-bar-track"><span class="top-bar-fill"></span></span>
+      <span class="top-bar-pct">70%</span>
     </div>
   </div>
 
