@@ -466,20 +466,25 @@ footer p{font-size:.82rem;color:var(--txt-soft)}
 @media(max-width:640px){.sticky-txt{display:none}.sticky .btn{width:100%}}
 
 /* scroll progress */
-/* Top loading bar — logo + progress indicator, reference: pattern used on sibling funnel pages */
-.top-bar{display:flex;align-items:center;gap:20px;padding:14px 24px;background:#0a0a0c;border-bottom:1px solid var(--peri-line);position:relative;z-index:2}
+/* Top loading bar — logo + progress indicator, sits directly on the hero's own background */
+.top-bar{display:flex;align-items:center;gap:20px;padding:20px 24px 0;position:relative;z-index:1}
 .top-bar-logo{height:26px;flex:none}
 .top-bar-track{flex:1;height:32px;border-radius:100px;background:rgba(255,255,255,.07);overflow:hidden;position:relative;max-width:640px}
 .top-bar-fill{height:100%;border-radius:100px;width:70%;
-  background:repeating-linear-gradient(-45deg,var(--blue),var(--blue) 10px,var(--blue-hi) 10px,var(--blue-hi) 20px);
+  background-color:var(--blue);
+  background-image:repeating-linear-gradient(45deg,var(--blue-hi) 0 12px,transparent 12px 24px);
+  background-size:34px 34px;
+  animation:barberpole 1s linear infinite;
   display:flex;align-items:center;justify-content:center;overflow:hidden}
 .top-bar-fill span{font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;white-space:nowrap;padding:0 14px}
+@keyframes barberpole{from{background-position:0 0}to{background-position:34px 0}}
 @media(max-width:560px){
-  .top-bar{padding:12px 16px;gap:14px}
+  .top-bar{padding:16px 16px 0;gap:14px}
   .top-bar-logo{height:20px}
   .top-bar-track{height:28px}
   .top-bar-fill span{font-size:.62rem;padding:0 8px}
 }
+@media(prefers-reduced-motion:reduce){.top-bar-fill{animation:none}}
 .progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:60;
   background:linear-gradient(90deg,var(--blue),var(--peri));box-shadow:0 0 12px rgba(138,160,221,.6)}
 
@@ -574,17 +579,18 @@ footer p{font-size:.82rem;color:var(--txt-soft)}
 <!-- scroll progress -->
 <div class="progress" id="progress"></div>
 
-<!-- top loading bar -->
-<div class="top-bar">
-  <img src="assets/logo-branca.svg" alt="Clínica en Orden Pro" class="top-bar-logo">
-  <div class="top-bar-track">
-    <div class="top-bar-fill"><span>Estamos finalizando tudo</span></div>
-  </div>
-</div>
-
 <!-- 01 · HERO -->
 <header class="hero">
   <div class="vgrid" id="vgrid" aria-hidden="true"></div>
+
+  <!-- top loading bar -->
+  <div class="top-bar">
+    <img src="assets/logo-branca.svg" alt="Clínica en Orden Pro" class="top-bar-logo">
+    <div class="top-bar-track">
+      <div class="top-bar-fill"><span>Estamos finalizando tudo</span></div>
+    </div>
+  </div>
+
   <div class="wrap">
     <span class="eyebrow reveal">Tu compra fue confirmada</span>
     <h1 class="reveal" data-d="1">Tu acceso está <span class="serif">siendo preparado</span>.</h1>
