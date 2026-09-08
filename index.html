@@ -576,6 +576,12 @@ footer p{font-size:.82rem;color:var(--txt-soft)}
   .doc-stage{margin-top:18px}
   .conoce h2{font-size:24px}
   .conoce p{font-size:14px}
+  /* section-to-section gaps stack (each section's own top+bottom padding, no collapsing) —
+     tighten ~30% across the board on mobile so dobras don't feel disconnected */
+  .hero{padding-bottom:63px}
+  .sec{padding:56px 0}
+  .sec-sm{padding:42px 0}
+  footer{margin-top:63px;padding:28px 0}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;scroll-behavior:auto!important}
