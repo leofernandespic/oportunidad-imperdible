@@ -693,7 +693,7 @@ footer p{font-size:.82rem;color:var(--txt-soft)}
     <div class="escalate" id="escalate">
       <div class="e-row"><span class="e-rail"><span class="e-dot"></span><span class="e-thread"></span></span><span class="e-text">Cada proceso es diferente.</span></div>
       <div class="e-row"><span class="e-rail"><span class="e-dot"></span><span class="e-thread"></span></span><span class="e-text">Cada sesión puede requerir un registro diferente.</span></div>
-      <div class="e-row"><span class="e-rail"><span class="e-dot"></span></span><span class="e-text">Cada paciente puede necesitar una tarea diferente.</span></div>
+      <div class="e-row"><span class="e-rail"><span class="e-dot"></span></span><span class="e-text">Cada paciente puede necesitar una <span class="serif">tarea diferente.</span></span></div>
     </div>
     <p class="pull reveal" data-d="4">Y ahí es donde entra <span class="serif">Clínica en Orden Pro</span>.</p>
     <p class="reveal">En lugar de empezar desde cero, empiezas con una estructura preparada. Elige lo que necesitas, completa la información, personaliza el documento con la identidad de tu consulta y listo. Tu documento está preparado para utilizarlo.</p>
@@ -1234,8 +1234,18 @@ footer p{font-size:.82rem;color:var(--txt-soft)}
 
     rows.forEach(function(row){
       var textEl = row.querySelector('.e-text');
-      var words = textEl.textContent.trim().split(/\s+/);
-      textEl.innerHTML = words.map(function(w){ return '<span class="sr-word">'+w+'</span>'; }).join(' ');
+      // walk child nodes (plain text + any inline emphasis span, e.g. .serif) so words
+      // keep their own styling instead of being flattened by a plain textContent split
+      var tokens = [];
+      Array.prototype.forEach.call(textEl.childNodes, function(node){
+        var cls = node.nodeType === 1 ? node.className : '';
+        (node.textContent || '').split(/\s+/).filter(Boolean).forEach(function(w){
+          tokens.push({w:w, cls:cls});
+        });
+      });
+      textEl.innerHTML = tokens.map(function(t){
+        return '<span class="sr-word'+(t.cls ? ' '+t.cls : '')+'">'+t.w+'</span>';
+      }).join(' ');
     });
     escalate.classList.add('sr-ready');
 
