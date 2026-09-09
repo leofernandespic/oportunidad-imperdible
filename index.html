@@ -522,11 +522,12 @@ footer p{font-size:.82rem;color:var(--txt-soft)}
 .section-light .total span{color:#5c616d}
 .section-light .total b{color:#101014}
 .section-light .total .strike{color:#a2a7b3}
-/* extra clearance so the mockup bridge's top half (which bleeds up out of this section)
-   never overlaps the closing paragraph — sized to roughly track the image's own half-height
-   as it scales with viewport (element+class beats ".sec"/".sec-sm"'s plain-class padding
-   at every breakpoint, including the mobile override, regardless of source order) */
-section.section-light{padding-bottom:clamp(110px,20vw,240px)}
+/* room for the full mockup bridge image (now standing entirely inside this section, base
+   on the seam) plus a small gap above it so it never overlaps the closing paragraph —
+   sized to roughly track the image's own full height as it scales with viewport
+   (element+class beats ".sec"'s plain-class padding at every breakpoint, including the
+   mobile override, regardless of source order) */
+section.section-light{padding-bottom:clamp(160px,38vw,420px)}
 
 .light-zone{background:#fff;color:#15161a}
 .light-zone .eyebrow{color:var(--blue);border-color:rgba(11,55,189,.22);background:rgba(11,55,189,.05)}
@@ -562,16 +563,16 @@ section.section-light{padding-bottom:clamp(110px,20vw,240px)}
 .section-blue .price-card .sub{color:#5c616d}
 .section-blue .price-card .fine{color:#9aa0ad}
 
-/* Mockup bridge: floats astride the Value Stack / Pricing seam — zero-height wrapper
-   pins the image's own vertical center exactly on the boundary (half bleeds up into the
-   white section, half down into the blue one). z-index beats section-blue's (auto) so the
-   image paints above it; painting above the white section above needs no help since that
-   section comes earlier in the DOM. The drop-shadow stack (not box-shadow, which can't
-   follow a PNG's alpha silhouette) traces the real device shapes for a soft, layered,
-   "resting on the seam" shadow instead of one flat blur. */
+/* Mockup bridge: sits entirely inside the white Value Stack section, its own bottom edge
+   resting exactly on the seam with the blue Pricing section below (zero gap) — like it's
+   standing on that dividing line, shadow spilling onto the blue. Zero-height wrapper pins
+   translateY(-100%) to the boundary itself. z-index beats section-blue's (auto) so the
+   shadow, which spills past the image's own box, still paints above it. The drop-shadow
+   stack (not box-shadow, which can't follow a PNG's alpha silhouette) traces the real
+   device shapes for a soft, layered shadow instead of one flat blur. */
 .mockup-bridge{position:relative;height:0;z-index:5;pointer-events:none}
 .mockup-bridge-img{
-  position:absolute;top:0;left:50%;transform:translate(-50%,-50%);
+  position:absolute;bottom:0;left:50%;transform:translate(-50%,-100%);
   width:min(1000px,84vw);display:block;
   filter:
     drop-shadow(0 14px 16px rgba(0,0,0,.35))
