@@ -585,6 +585,9 @@ footer p{font-size:.82rem;color:var(--txt-soft)}
   .sec{padding:56px 0}
   .sec-sm{padding:42px 0}
   footer{margin-top:63px;padding:28px 0}
+  /* same problem, different spot: every dobra's own headline block (.sec-head) sits
+     60px above its content on top of the section gaps above — same fix as the hero */
+  .sec-head{margin-bottom:28px}
   /* testimonial cards were nearly full-screen on mobile — shrink card + type scale */
   .tst-track{gap:14px}
   .tst{width:min(64vw,250px);padding:20px 20px;border-radius:16px}
