@@ -566,12 +566,16 @@ section.section-light{padding-bottom:clamp(190px,44vw,440px)}
 /* Mockup bridge: sits entirely inside the white Value Stack section, its own bottom edge
    resting exactly on the seam with the blue Pricing section below (zero gap) — like it's
    standing on that dividing line. Zero-height wrapper's bottom edge IS the seam, so
-   "bottom:0" alone puts the image's bottom there — no Y transform needed (a leftover
-   translateY(-100%) from an earlier version double-shifted it a full image-height too far
-   up, off of the seam and onto the content above). Only X needs a transform, to center it. */
+   "bottom:0" alone puts the image's OWN BOX bottom there. But the PNG itself has a ~17px
+   soft transparent fade below the actual device shapes (its baked-in ambient shadow
+   fading out before the file's true edge, confirmed by decoding its alpha channel) — that
+   showed up as a thin white sliver between the visible mockup and the seam. The extra
+   translateY nudges it down by that fraction of the image's OWN height (a % transform
+   resolves against the element's own box, so it scales correctly at any width) to tuck
+   the fade behind the seam instead of leaving it floating above it. */
 .mockup-bridge{position:relative;height:0;z-index:5;pointer-events:none}
 .mockup-bridge-img{
-  position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  position:absolute;bottom:0;left:50%;transform:translate(-50%,3.3%);
   width:min(1000px,84vw);display:block;
 }
 @media(max-width:560px){.mockup-bridge-img{width:92vw}}
