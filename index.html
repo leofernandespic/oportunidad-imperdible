@@ -1372,13 +1372,21 @@ section.section-light{padding-bottom:clamp(190px,44vw,440px)}
       ind.style.width = btn.offsetWidth + 'px';
       ind.style.transform = 'translateX(' + btn.offsetLeft + 'px)';
     }
-    function setTab(i){
+    function setTab(i, scrollTab){
       i = ((i % count) + count) % count; // wrap around either direction
       tabs.forEach(function(t){
         var on = t.dataset.tab === String(i);
         t.classList.toggle('active', on);
         t.setAttribute('aria-selected', on ? 'true' : 'false');
-        if (on) { moveIndicator(t); t.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'}); }
+        if (on) {
+          moveIndicator(t);
+          // only on an explicit tap, and only ever scroll the tab bar itself horizontally —
+          // never scrollIntoView, which also yanks the whole page vertically (that was making
+          // the page jump back up to the hero every time a video auto-advanced)
+          if (scrollTab && wrap.scrollWidth > wrap.clientWidth + 1) {
+            wrap.scrollTo({ left: t.offsetLeft - (wrap.clientWidth - t.offsetWidth) / 2, behavior: 'smooth' });
+          }
+        }
       });
       items.forEach(function(it){
         var on = it.dataset.tab === String(i);
@@ -1391,7 +1399,7 @@ section.section-light{padding-bottom:clamp(190px,44vw,440px)}
       if (cap) cap.textContent = caps[i] || caps[0];
     }
     tabs.forEach(function(btn){
-      btn.addEventListener('click', function(){ setTab(Number(btn.dataset.tab)); });
+      btn.addEventListener('click', function(){ setTab(Number(btn.dataset.tab), true); });
     });
     // auto-advance: when the active tab's video finishes, move to the next one (loops back to 0 after the last)
     items.forEach(function(it){
@@ -1399,7 +1407,7 @@ section.section-light{padding-bottom:clamp(190px,44vw,440px)}
       if (!v) return;
       v.addEventListener('ended', function(){
         if (!it.classList.contains('active')) return;
-        setTab(Number(it.dataset.tab) + 1);
+        setTab(Number(it.dataset.tab) + 1, false); // auto-advance: never scroll
       });
     });
     window.addEventListener('resize', function(){
