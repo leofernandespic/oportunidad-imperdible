@@ -946,10 +946,13 @@ section.section-light{padding-bottom:clamp(190px,44vw,440px)}
       <div class="price-now"><span class="cur">€</span><span class="amt">47</span></div>
       <p class="sub">Tu acceso incluye todas las herramientas y recursos que acabas de conocer.</p>
       <!-- HOTMART - Sales Funnel Widget -->
+      <!--- sales funnel container --->
       <div id="hotmart-sales-funnel"></div>
+
+      <!--- script load and setup --->
       <script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
       <script>
-        checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel')
+      checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel')
       </script>
       <!-- HOTMART - Sales Funnel Widget -->
       <p class="fine">Pago único · Acceso inmediato tras la confirmación</p>
